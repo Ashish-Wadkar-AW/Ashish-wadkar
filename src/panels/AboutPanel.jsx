@@ -40,7 +40,7 @@ export default function AboutPanel() {
               className="ghost-neon" style={{ fontSize: '.8rem', padding: '.55rem 1.1rem' }}>
               <i className="fab fa-github" /> GitHub
             </a>
-            <a href="https://instagram.com/hey_ashya" target="_blank" rel="noreferrer"
+            <a href="https://instagram.com/hey__ashya" target="_blank" rel="noreferrer"
               className="ghost-neon"
               style={{ fontSize: '.8rem', padding: '.55rem 1.1rem', borderColor: 'rgba(255,238,46,.35)', color: 'var(--ny)' }}>
               <i className="fab fa-instagram" /> Instagram
