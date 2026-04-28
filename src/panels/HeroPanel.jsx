@@ -1,3 +1,10 @@
+import * as lottieReact from 'lottie-react'
+import workAnimation from '../assets/w1.json'
+
+// Some bundlers treat `lottie-react`'s CJS default export differently.
+// In ESM, the actual component ends up at `lottieReact.default.default`.
+const Lottie = lottieReact?.default?.default ?? lottieReact?.default ?? lottieReact?.Lottie ?? lottieReact
+
 export default function HeroPanel({ goTo }) {
   return (
     <section className="panel panel-home scan-line active" data-panel="0">
@@ -12,13 +19,9 @@ export default function HeroPanel({ goTo }) {
           animationDuration: '36s', borderColor: 'rgba(255,15,123,.2)'
         }}
       />
-      <div
-        style={{
-          maxWidth: '1300px', margin: '0 auto', display: 'flex', flexDirection: 'column',
-          justifyContent: 'center', minHeight: '86%', gap: '1.8rem', position: 'relative', zIndex: 2
-        }}
-      >
-        <div className="rv a-down d0 home-chip-row" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+      <div className="home-wrap">
+        <div className="home-left">
+          <div className="rv a-down d0 home-chip-row" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <span style={{
             background: 'rgba(0,0,0,.6)', backdropFilter: 'blur(12px)',
             border: '1px solid rgba(255,59,0,.45)', borderRadius: '80px',
@@ -34,49 +37,61 @@ export default function HeroPanel({ goTo }) {
           }}>
             <i className="fas fa-globe" /> AVAILABLE WORLDWIDE
           </span>
-        </div>
+          </div>
 
-        <div className="rv a-diag d1">
-          <div className="home-shake-once">
-            <div className="glitch-first">ASHISH</div>
-            <div className="glitch-last" style={{ marginTop: '-.2em' }}>WADKAR</div>
+          <div className="rv a-diag d1">
+            <div className="home-shake-once">
+              <div className="glitch-first">ASHISH</div>
+              <div className="glitch-last" style={{ marginTop: '-.2em' }}>WADKAR</div>
+            </div>
+          </div>
+
+          <div className="rv a-up d2 home-role-row" style={{ display: 'flex', gap: '.8rem', flexWrap: 'wrap' }}>
+            <div style={{
+              background: 'rgba(255,59,0,.15)', borderLeft: '4px solid var(--or)',
+              padding: '.4rem 1rem', fontSize: '.88rem'
+            }}>
+              <i className="fas fa-crown" style={{ color: 'var(--or)' }} /> Full Stack Engineer
+            </div>
+            <div style={{
+              background: 'rgba(0,242,255,.07)', borderLeft: '4px solid var(--cy)',
+              padding: '.4rem 1rem', fontSize: '.88rem'
+            }}>
+              <i className="fas fa-mobile-alt" style={{ color: 'var(--cy)' }} /> React Native · Node · Python
+            </div>
+          </div>
+
+          <p className="rv a-up d3" style={{ maxWidth: '560px', color: 'var(--muted)', lineHeight: 1.65, fontSize: '.95rem' }}>
+            Building futuristic web &amp; mobile experiences with speed, precision &amp; cyber aesthetics.
+            From 3D configurators to scalable backend systems.
+          </p>
+
+          <div className="rv a-up d4 home-cta-row" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <a href="#" onClick={(e) => { e.preventDefault(); goTo(1) }} className="btn-glow">
+              <i className="fas fa-arrow-right" /> EXPLORE WORK
+            </a>
+            <a href="#" onClick={(e) => { e.preventDefault(); goTo(4) }} className="ghost-neon">
+              <i className="fas fa-paper-plane" /> HIRE ME
+            </a>
+          </div>
+
+          <div className="rv a-right d5" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <div style={{ width: '36px', height: '1px', background: 'var(--or)' }} />
+            <span style={{ fontSize: '.58rem', letterSpacing: '4px', fontFamily: 'monospace', color: '#444' }}>
+              SCROLL → OR ARROW KEYS
+            </span>
           </div>
         </div>
 
-        <div className="rv a-up d2 home-role-row" style={{ display: 'flex', gap: '.8rem', flexWrap: 'wrap' }}>
-          <div style={{
-            background: 'rgba(255,59,0,.15)', borderLeft: '4px solid var(--or)',
-            padding: '.4rem 1rem', fontSize: '.88rem'
-          }}>
-            <i className="fas fa-crown" style={{ color: 'var(--or)' }} /> Full Stack Engineer
+        <div className="home-right rv a-left d2" aria-hidden="true">
+          <div className="home-lottie">
+            <Lottie
+              animationData={workAnimation}
+              loop
+              autoplay
+              rendererSettings={{ preserveAspectRatio: 'xMidYMid meet' }}
+            />
           </div>
-          <div style={{
-            background: 'rgba(0,242,255,.07)', borderLeft: '4px solid var(--cy)',
-            padding: '.4rem 1rem', fontSize: '.88rem'
-          }}>
-            <i className="fas fa-mobile-alt" style={{ color: 'var(--cy)' }} /> React Native · Node · Python
-          </div>
-        </div>
-
-        <p className="rv a-up d3" style={{ maxWidth: '560px', color: 'var(--muted)', lineHeight: 1.65, fontSize: '.95rem' }}>
-          Building futuristic web &amp; mobile experiences with speed, precision &amp; cyber aesthetics.
-          From 3D configurators to scalable backend systems.
-        </p>
-
-        <div className="rv a-up d4 home-cta-row" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-          <a href="#" onClick={(e) => { e.preventDefault(); goTo(1) }} className="btn-glow">
-            <i className="fas fa-arrow-right" /> EXPLORE WORK
-          </a>
-          <a href="#" onClick={(e) => { e.preventDefault(); goTo(4) }} className="ghost-neon">
-            <i className="fas fa-paper-plane" /> HIRE ME
-          </a>
-        </div>
-
-        <div className="rv a-right d5" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <div style={{ width: '36px', height: '1px', background: 'var(--or)' }} />
-          <span style={{ fontSize: '.58rem', letterSpacing: '4px', fontFamily: 'monospace', color: '#444' }}>
-            SCROLL → OR ARROW KEYS
-          </span>
         </div>
       </div>
 
